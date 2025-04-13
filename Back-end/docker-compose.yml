@@ -1,0 +1,65 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - CLOUDINARY_URL
+      - MONGODB_CONNECTION_STRING
+      - MONGODB_DATABASE_NAME
+      - SPOTIFYPOOL_CLIENT_URL
+      - SPOTIFYPOOL_HUB_COUNT_STREAM_URL
+      - SPOTIFYPOOL_HUB_PLAYLIST_URL
+      - SPOTIFYPOOL_HUB_PLAYBACK_SYNC_URL
+      - EMAIL_SMTP_HOST
+      - EMAIL_SMTP_PORT
+      - EMAIL_SMTP_USERNAME
+      - EMAIL_SMTP_PASSWORD
+      - EMAIL_FROMADDRESS
+      - EMAIL_FROMNAME
+      - Authentication_Google_ClientId
+      - Authentication_Google_ClientSecret
+      - SPOTIFY_HUB_CORS_ORIGIN_FE_PRODUCTION
+      - SPOTIFY_HUB_CORS_ORIGIN_BE_PRODUCTION
+      - SPOTIFY_HUB_CORS_ORIGIN_BE_01_DEVELOPMENT
+      - SPOTIFY_HUB_CORS_ORIGIN_FE_01_DEVELOPMENT
+      - SPOTIFY_HUB_CORS_ORIGIN_BE_02_DEVELOPMENT
+      - JWTSettings_SecretKey
+      - JWTSettings_RefreshTokenSecretKey
+      - APIKeySettings_SecretKey
+      - JiraSettings_AtlassianUsername
+      - JiraSettings_AtlassianApiKey
+      - JiraSettings_Domain
+      - SPOTIFY_CLIENT_ID
+      - SPOTIFY_CLIENT_SECRET
+      - SPOTIFY_REDIRECT_URI
+      - GENIUS_CLIENT_ID
+      - GENIUS_CLIENT_SECRET
+      - GENIUS_REDIRECT_URI
+      - GENIUS_STATE
+      - IPGEOLOCATION_API_KEY
+      - OPENAI_API_KEY
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_REGION
+      - AWS_S3_BUCKET_NAME
+      - AWS_MediaConvertRole
+      - AWS_MediaConvertEndpoint
+      - AWS_MediaConvertQueue
+      - BunnyCDN_API_KEY
+      - BunnyCDN_StorageZoneName
+      - REDIS_CONNECTION_STRING
+      - REDIS_PORT
+      - REDIS_PASSWORD
+    restart: unless-stopped
+    networks:
+      - spotifypool-network
+
+networks:
+  spotifypool-network:
+    driver: bridge
